@@ -1,0 +1,62 @@
+:root {
+  --bg-color: #121214;
+  --surface-color: #202024;
+  --text-primary: #e1e1e6;
+  --text-secondary: #a8a8b3;
+  --primary-color: #8257e6;
+  --primary-hover: #9466ff;
+  --error-color: #f75a68;
+  --border-radius: 8px;
+  --transition: 0.2s ease;
+
+  /* Lumen Theme Variables */
+  --lumen-bg: #09090b;
+  --lumen-surface: #18181b;
+  --lumen-border: #27272a;
+  --lumen-text: #e4e4e7;
+  --lumen-text-dim: #a1a1aa;
+  --lumen-primary: #3b82f6;
+  --lumen-primary-hover: #2563eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+  /* -webkit-app-region: drag; REMOVIDO: Causa bloqueio de inputs */
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input {
+  outline: none;
+}

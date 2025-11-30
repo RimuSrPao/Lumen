@@ -1,0 +1,81 @@
+.feedContainer {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.feedContainer::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.feedHeader {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.feedTabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feedTab {
+    background: transparent;
+    border: none;
+    color: var(--lumen-text-dim);
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.feedTab:hover {
+    color: var(--lumen-text);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.activeTab {
+    background: var(--lumen-primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.activeTab:hover {
+    background: var(--lumen-primary);
+    opacity: 0.9;
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: var(--lumen-text-dim);
+    font-size: 1.1rem;
+}
+
+.error {
+    color: #ef4444;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--lumen-text-dim);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
+}
+
+.emptyState p {
+    margin: 0.5rem 0;
+}

@@ -1,0 +1,144 @@
+.commentInputWrapper {
+    width: 100%;
+}
+
+.commentInputContainer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    background-color: var(--lumen-bg);
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-radius: 24px;
+    border: 1px solid var(--lumen-border);
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+}
+
+.commentInputContainer:focus-within {
+    border-color: var(--lumen-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.leftActions {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.actionBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--lumen-text-dim);
+    border-radius: 50%;
+}
+
+.actionBtn:hover,
+.actionBtn.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--lumen-primary);
+}
+
+.commentEmojiWrapper {
+    position: relative;
+}
+
+.commentEmojiPickerPopover {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    z-index: 50;
+    margin-bottom: 0.5rem;
+}
+
+.inputArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.formatToolbar {
+    display: flex;
+    gap: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.formatBtn {
+    background: transparent;
+    border: none;
+    color: var(--lumen-text-dim);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.formatBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--lumen-text);
+}
+
+.commentInput {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0;
+    color: var(--lumen-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    resize: none;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    min-height: 24px;
+    max-height: 200px;
+    line-height: 1.5;
+}
+
+.commentInput::-webkit-scrollbar {
+    display: none;
+}
+
+.commentInput::placeholder {
+    color: var(--lumen-text-dim);
+}
+
+.sendCommentBtn {
+    background: transparent;
+    color: var(--lumen-primary);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    margin-bottom: 0.1rem;
+}
+
+.sendCommentBtn:hover:not(:disabled) {
+    background-color: rgba(59, 130, 246, 0.1);
+    transform: scale(1.1);
+}
+
+.sendCommentBtn:disabled {
+    background-color: var(--lumen-border);
+    opacity: 0.5;
+    cursor: not-allowed;
+}

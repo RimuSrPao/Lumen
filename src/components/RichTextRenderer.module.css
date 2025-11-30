@@ -1,0 +1,56 @@
+.richTextContainer {
+    font-family: inherit;
+    color: inherit;
+    line-height: 1.6;
+}
+
+.paragraph {
+    margin-bottom: 0.5rem;
+}
+
+.paragraph:last-child {
+    margin-bottom: 0;
+}
+
+.link {
+    color: var(--lumen-primary);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.inlineCode {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.blockCode {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    margin: 0.5rem 0;
+}
+
+/* Listas */
+.richTextContainer ul,
+.richTextContainer ol {
+    margin-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.richTextContainer blockquote {
+    border-left: 3px solid var(--lumen-primary);
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+    color: var(--lumen-text-dim);
+    font-style: italic;
+}

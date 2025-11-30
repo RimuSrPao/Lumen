@@ -1,0 +1,8 @@
+/* UserPresenceIndicator.css */
+.user-presence-indicator {
+    transition: all 0.3s ease;
+}
+
+.user-presence-indicator.online .status-dot {
+    box-shadow: 0 0 4px rgba(16, 185, 129, 0.4);
+}

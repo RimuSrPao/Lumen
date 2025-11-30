@@ -1,0 +1,66 @@
+.title-bar {
+    height: 32px;
+    background-color: #131316;
+    /* Mesma cor do fundo do app */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    user-select: none;
+    border-bottom: 1px solid #27272a;
+}
+
+.title-bar-drag-area {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    -webkit-app-region: drag;
+    /* Permite arrastar a janela */
+}
+
+.app-title {
+    font-size: 12px;
+    color: #a1a1aa;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.title-bar-controls {
+    display: flex;
+    height: 100%;
+    -webkit-app-region: no-drag;
+    /* Botões não podem ser área de arrastar */
+}
+
+.control-btn {
+    width: 46px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.control-btn:hover {
+    background-color: #27272a;
+    color: #ffffff;
+}
+
+.close-btn:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.control-btn svg {
+    pointer-events: none;
+}

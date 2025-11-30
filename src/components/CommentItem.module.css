@@ -1,0 +1,288 @@
+.commentItemWrapper {
+    position: relative;
+}
+
+.commentItem {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.commentAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--lumen-primary), #2563eb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.commentAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.commentContent {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    border-top-left-radius: 0;
+    padding-right: 1rem;
+    transition: padding-right 0.2s ease-out;
+}
+
+.ownItem:hover .commentContent {
+    padding-right: 4rem;
+}
+
+.commentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+}
+
+.commentAuthor {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--lumen-text);
+}
+
+.commentTime {
+    font-size: 0.75rem;
+    color: var(--lumen-text-dim);
+}
+
+.commentText {
+    color: #e4e4e7;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.commentActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.25rem;
+}
+
+.commentActionBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: var(--lumen-text-dim);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem;
+    transition: color 0.2s;
+}
+
+.commentActionBtn:hover {
+    color: var(--lumen-text);
+}
+
+.commentActionBtn.liked {
+    color: var(--lumen-primary);
+}
+
+.ownerActions {
+    position: absolute;
+    right: 0;
+    top: 0.5rem;
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.commentItem:hover .ownerActions,
+.replyItem:hover .ownerActions {
+    opacity: 1;
+}
+
+.replyItem .ownerActions {
+    top: 0;
+}
+
+.deleteCommentBtn {
+    background: none;
+    border: none;
+    color: var(--lumen-text-dim);
+    cursor: pointer;
+    padding: 0.4rem;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.deleteCommentBtn:hover {
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 50%;
+}
+
+/* Reply Styles */
+.replyItem {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.replyAvatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--lumen-primary), #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: white;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.replyAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.replyContent {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    border-top-left-radius: 0;
+    padding-right: 1rem;
+    transition: padding-right 0.2s ease-out;
+}
+
+.ownItem:hover .replyContent {
+    padding-right: 4rem;
+}
+
+.replyHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+}
+
+.replyAuthor {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--lumen-text);
+}
+
+.replyTime {
+    font-size: 0.7rem;
+    color: var(--lumen-text-dim);
+}
+
+.replyText {
+    font-size: 0.9rem;
+    color: #e4e4e7;
+    line-height: 1.4;
+}
+
+/* Reply Context */
+.replyContext {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--lumen-text-dim);
+    margin-bottom: 0.25rem;
+    margin-top: -0.25rem;
+    opacity: 0.9;
+}
+
+.replyContextIcon {
+    font-size: 1rem;
+    color: var(--lumen-text-dim);
+    user-select: none;
+    transform: scaleX(-1) rotate(180deg);
+    display: inline-block;
+    line-height: 1;
+    margin-right: 2px;
+}
+
+.replyContextAuthor {
+    font-weight: 600;
+    color: var(--lumen-primary);
+    cursor: pointer;
+}
+
+.replyContextAuthor:hover {
+    text-decoration: underline;
+}
+
+.replyContextText {
+    color: var(--lumen-text-dim);
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Format Toolbar Styles */
+.formatToolbar {
+    display: flex;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 0.5rem;
+    width: fit-content;
+}
+
+.formatBtn {
+    background: transparent;
+    border: none;
+    color: var(--lumen-text-dim);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.formatBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--lumen-text);
+}
+
+/* Clickable Elements */
+.clickable {
+    cursor: pointer;
+    transition: opacity 0.2s;
+    position: relative;
+    z-index: 5;
+}
+
+.clickable:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.commentAvatar.clickable:hover,
+.replyAvatar.clickable:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}

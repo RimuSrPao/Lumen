@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Regras para a coleção de chats
+    match /chats/{chatId} {
+      // Permitir leitura/escrita apenas se o usuário for um participante
+      allow read, write: if request.auth != null && request.auth.uid in resource.data.participants;
+      
+      // Regras para a subcoleção de mensagens
+      match /messages/{messageId} {
+        // Permitir leitura/escrita apenas se o usuário for participante do chat pai
+        allow read, write: if request.auth != null && request.auth.uid in get(/databases/$(database)/documents/chats/$(chatId)).data.participants;
+      }
+    }
+    
+    // Outras regras existentes...
+    match /{document=**} {
+      allow read, write: if request.auth != null; // Regra genérica (ajustar conforme necessidade)
+    }
+  }
+}

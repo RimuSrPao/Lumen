@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --lumen-bg: #131316;
+    --lumen-surface: #1c1c21;
+    --lumen-primary: #3b82f6;
+    /* Azul vibrante */
+    --lumen-primary-hover: #2563eb;
+    --lumen-text: #ffffff;
+    --lumen-text-dim: #a1a1aa;
+    --lumen-border: #27272a;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--lumen-bg);
+    margin: 0;
+    overflow: hidden;
+    /* Evita scroll na janela principal */
+}
+
+.lumen-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--lumen-bg);
+}
+
+/* --- Coluna Esquerda (Form) --- */
+.lumen-left {
+    width: 45%;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--lumen-bg);
+    color: var(--lumen-text);
+    position: relative;
+    /* Drag removido para evitar bloqueio de inputs */
+}
+
+.lumen-header {
+    position: absolute;
+    top: 2rem;
+    left: 4rem;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--lumen-text);
+}
+
+.logo-circle {
+    width: 12px;
+    height: 12px;
+    background-color: var(--lumen-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--lumen-primary);
+}
+
+.lumen-content {
+    max-width: 400px;
+    width: 100%;
+}
+
+.lumen-content h1 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--lumen-text-dim);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.lumen-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    background: linear-gradient(to right, #fff, #a1a1aa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--lumen-text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: var(--lumen-primary);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.link-btn:hover {
+    color: var(--lumen-primary-hover);
+    text-decoration: underline;
+}
+
+/* --- Formulário --- */
+.lumen-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--lumen-text-dim);
+    text-transform: uppercase;
+}
+
+.input-group input {
+    background-color: var(--lumen-surface);
+    border: 1px solid var(--lumen-border);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    color: var(--lumen-text);
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--lumen-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.submit-btn {
+    flex: 1;
+    background-color: var(--lumen-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.875rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: var(--lumen-primary-hover);
+}
+
+.google-btn {
+    background-color: var(--lumen-surface);
+    border: 1px solid var(--lumen-border);
+    border-radius: 8px;
+    padding: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    width: 50px;
+    /* Botão quadrado */
+}
+
+.google-btn:hover {
+    background-color: #27272a;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+/* --- Coluna Direita (Imagem) --- */
+.lumen-right {
+    width: 55%;
+    background-image: url('../assets/lumen_bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    -webkit-app-region: drag;
+    /* Permite arrastar pela imagem também */
+}
+
+/* Overlay sutil para garantir contraste se necessário */
+.lumen-right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--lumen-bg), transparent 20%);
+}
