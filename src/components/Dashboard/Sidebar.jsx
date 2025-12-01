@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Sidebar.module.css';
-import { Home, Flame, MessageCircle, Settings, User, LogOut, Bell } from 'lucide-react';
+import { Home, Megaphone, MessageCircle, Settings, User, LogOut, Bell } from 'lucide-react';
 import { ref, onValue } from 'firebase/database';
 import { dbRealtime } from '../../firebase';
 
@@ -19,7 +19,7 @@ export function Sidebar({ currentView, onNavigate, unreadCount, currentUser, onL
 
     const menuItems = [
         { id: 'feed', icon: Home, label: 'Feed', active: true },
-        { id: 'trending', icon: Flame, label: 'Trending', active: false },
+        { id: 'news', icon: Megaphone, label: 'Novidades', active: true },
         { id: 'chat', icon: MessageCircle, label: 'Mensagens', badge: unreadCount },
     ];
 

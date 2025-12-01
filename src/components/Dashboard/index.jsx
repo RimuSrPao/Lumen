@@ -13,6 +13,8 @@ import { Modal } from './Modal';
 import { UserProfile } from '../UserProfile/UserProfile';
 import { Notifications } from './Notifications';
 import { useNotifications } from '../../hooks/useNotifications';
+import { NewsFeed } from './NewsFeed';
+import { Settings } from './Settings';
 
 // Componentes Externos
 import { ChatView } from '../Chat/ChatView';
@@ -151,8 +153,12 @@ export function Dashboard({ user }) {
                         onUserClick={handleViewProfile}
                     />
                 );
+            case 'news':
+                return <NewsFeed user={user} />;
             case 'chat':
                 return <ChatView user={user} onViewProfile={handleViewProfile} />;
+            case 'settings':
+                return <Settings user={user} />;
             default: // 'feed'
                 return (
                     <Feed
@@ -199,7 +205,7 @@ export function Dashboard({ user }) {
                             }
                             handleNavigate(view);
                         }}
-                        unreadCount={unreadCount}
+                        unreadCount={unreadChatCount}
                     />
                 }
                 content={renderContent()}

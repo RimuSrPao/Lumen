@@ -1,0 +1,144 @@
+.container {
+    animation: fadeIn 0.4s ease;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+/* Custom scrollbar */
+.container::-webkit-scrollbar {
+    width: 6px;
+    display: block;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.backButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.backButton:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(130, 87, 230, 0.3);
+}
+
+.article {
+    background: var(--surface-color);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--lumen-border);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.heroImageContainer {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--surface-color) 0%, transparent 50%);
+}
+
+.contentWrapper {
+    padding: 2.5rem 3rem;
+}
+
+.header {
+    margin-bottom: 2.5rem;
+}
+
+.category {
+    display: inline-block;
+    background: rgba(130, 87, 230, 0.2);
+    color: #996DFF;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.content {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .heroImageContainer {
+        height: 250px;
+    }
+
+    .contentWrapper {
+        padding: 2rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
