@@ -22,9 +22,13 @@ export function Sidebar({ currentView, onNavigate, unreadCount }) {
                     <span className={styles.navIcon}><TextWithEmojis text="🔥" size={20} /></span>
                     <span>Trending</span>
                 </div>
-                <div className={styles.navItem}>
+                <div
+                    className={`${styles.navItem} ${currentView === 'chat' ? styles.active : ''}`}
+                    onClick={() => onNavigate('chat')}
+                >
                     <span className={styles.navIcon}><TextWithEmojis text="💬" size={20} /></span>
                     <span>Mensagens</span>
+                    {unreadCount > 0 && <span className={styles.badge}>{unreadCount}</span>}
                 </div>
                 <div className={styles.navItem}>
                     <span className={styles.navIcon}><TextWithEmojis text="⚙️" size={20} /></span>

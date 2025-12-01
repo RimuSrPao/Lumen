@@ -2,6 +2,9 @@
     font-family: inherit;
     color: inherit;
     line-height: 1.6;
+    max-width: 100%;
+    overflow-x: auto;
+    /* Allow scrolling for wide content */
 }
 
 .paragraph {
@@ -38,6 +41,9 @@
     font-size: 0.9em;
     white-space: pre-wrap;
     margin: 0.5rem 0;
+    overflow-x: auto;
+    /* Ensure code blocks scroll */
+    max-width: 100%;
 }
 
 /* Listas */

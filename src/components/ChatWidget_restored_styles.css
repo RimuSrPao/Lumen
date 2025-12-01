@@ -1,0 +1,84 @@
+/* --- Messages --- */
+.message-bubble-wrapper {
+    display: flex;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.message-bubble-wrapper.me {
+    justify-content: flex-end;
+}
+
+.message-bubble-wrapper.other {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    padding: 0.5rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    position: relative;
+    max-width: 80%;
+    min-width: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.message-bubble-wrapper.me .message-bubble {
+    background: linear-gradient(135deg, var(--lumen-primary), #2563eb);
+    color: white;
+    border-radius: 16px 16px 0 16px;
+}
+
+.message-bubble-wrapper.other .message-bubble {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: var(--lumen-text);
+    border-radius: 16px 16px 16px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.message-bubble-wrapper.deleted .message-bubble {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-image: none !important;
+    color: var(--lumen-text-dim) !important;
+    font-style: italic;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    backdrop-filter: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.message-text-content {
+    word-break: break-word;
+    max-width: 100%;
+}
+
+.message-meta {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 14px;
+    opacity: 0.7;
+    font-size: 0.7rem;
+    margin-bottom: 1px;
+}
+
+.message-time {
+    white-space: nowrap;
+    font-size: 0.65rem;
+}
+
+.message-status {
+    display: flex;
+    align-items: center;
+}

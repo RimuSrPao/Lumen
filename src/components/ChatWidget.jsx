@@ -214,11 +214,21 @@ const ChatWidget = ({ isOpen, onClose }) => {
                                                 <p className="reply-content-preview">{msg.replyTo.content}</p>
                                             </div>
                                         )}
-                                        <TextWithEmojis text={msg.content} size={14} />
+                                        <span className="message-text-content">
+                                            <TextWithEmojis text={msg.content} size={14} />
+                                        </span>
+                                        <span className="message-meta">
+                                            <span className="message-time">
+                                                {msg.timestamp ? format(msg.timestamp.toDate(), 'HH:mm') : '...'}
+                                            </span>
+                                            {isMe && !isDeleted && (
+                                                <span className="message-status">
+                                                    {/* Simulação de check duplo (lido/entregue) */}
+                                                    <TextWithEmojis text="✓✓" size={10} />
+                                                </span>
+                                            )}
+                                        </span>
                                     </div>
-                                    <span className="message-time">
-                                        {msg.timestamp ? format(msg.timestamp.toDate(), 'HH:mm') : '...'}
-                                    </span>
                                 </div>
                             );
                         })}
@@ -240,16 +250,38 @@ const ChatWidget = ({ isOpen, onClose }) => {
                         </div>
                     )}
 
-                    <form className="chat-input-area" onSubmit={handleSendMessage}>
-                        <input
-                            type="text"
-                            placeholder="Digite sua mensagem..."
-                            value={messageInput}
-                            onChange={(e) => setMessageInput(e.target.value)}
-                            className="chat-message-input"
-                        />
-                        <button type="submit" className="chat-send-btn" disabled={!messageInput.trim()}>
-                            <TextWithEmojis text="➤" size={16} />
+                    <form className="chat-footer-premium" onSubmit={handleSendMessage}>
+                        <div className="chat-input-wrapper">
+                            <button type="button" className="chat-input-icon-btn" title="Anexar arquivo">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                                </svg>
+                            </button>
+                            <button type="button" className="chat-input-icon-btn" title="Emojis">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                                    <line x1="9" x2="9.01" y1="9" y2="9" />
+                                    <line x1="15" x2="15.01" y1="9" y2="9" />
+                                </svg>
+                            </button>
+                            <input
+                                type="text"
+                                className="chat-message-input"
+                                placeholder="Digite sua mensagem..."
+                                value={messageInput}
+                                onChange={(e) => setMessageInput(e.target.value)}
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="chat-send-btn"
+                            disabled={!messageInput.trim()}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13" />
+                                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                            </svg>
                         </button>
                     </form>
                 </div>

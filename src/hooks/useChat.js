@@ -131,17 +131,42 @@ export function useChatMessages(chatId) {
 // Funções de ação do chat
 export const chatActions = {
     // Enviar mensagem
-    sendMessage: async (chatId, content, senderId, recipientId, replyTo = null) => {
-        if (!content.trim()) return;
+    sendMessage: async (chatId, content, senderId, recipientId, replyTo = null, imageFile = null) => {
+        if (!content.trim() && !imageFile) return;
 
         const chatRef = doc(db, 'chats', chatId);
         const messagesRef = collection(chatRef, 'messages');
 
         try {
+            let imageUrl = null;
+
+            if (imageFile) {
+                // Import dinâmico para evitar dependência circular se houver, ou apenas para manter limpo
+                const { compressImage } = await import('../utils/compressImage');
+                const compressedFile = await compressImage(imageFile, 1920, 1920, 0.7);
+
+                const formData = new FormData();
+                formData.append('file', compressedFile);
+                formData.append('upload_preset', 'lumen_uploads');
+
+                const response = await fetch('https://api.cloudinary.com/v1_1/dasntpbd3/image/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Falha no upload da imagem');
+                }
+
+                const data = await response.json();
+                imageUrl = data.secure_url;
+            }
+
             // 1. Adicionar mensagem na subcoleção
             const messageData = {
                 senderId,
                 content,
+                imageUrl, // Adicionando URL da imagem
                 timestamp: serverTimestamp(),
                 read: false
             };
@@ -157,9 +182,10 @@ export const chatActions = {
             await addDoc(messagesRef, messageData);
 
             // 2. Atualizar o documento do chat (lastMessage, timestamp e unreadCounts)
-            // Usamos setDoc com merge para garantir que campos faltantes (em chats antigos) sejam criados
+            const lastMessageText = imageUrl ? (content ? `📷 ${content}` : '📷 Imagem') : content;
+
             const updateData = {
-                lastMessage: content,
+                lastMessage: lastMessageText,
                 updatedAt: serverTimestamp(),
                 unreadCounts: {
                     [recipientId]: increment(1)

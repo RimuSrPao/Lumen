@@ -1,7 +1,11 @@
 .sidebar {
     width: 250px;
     min-width: 250px;
+    max-width: 250px;
+    /* Force fixed width */
     flex-shrink: 0;
+    flex-grow: 0;
+    /* Prevent growing */
     background-color: var(--lumen-bg);
     border-right: 1px solid var(--lumen-border);
     display: flex;
@@ -49,6 +53,7 @@
     cursor: pointer;
     transition: all 0.2s;
     font-weight: 500;
+    position: relative;
 }
 
 .navItem:hover {

@@ -13,7 +13,7 @@ import { Notifications } from './Notifications';
 import { useNotifications } from '../../hooks/useNotifications';
 
 // Componentes Externos
-import ChatWidget from '../ChatWidget';
+import { ChatView } from '../Chat/ChatView'; // Importando ChatView
 import { useUnreadChatCount } from '../../hooks/useChat';
 import { TextWithEmojis } from '../TextWithEmojis';
 
@@ -21,8 +21,7 @@ import { TextWithEmojis } from '../TextWithEmojis';
 import styles from './DashboardLayout.module.css';
 
 export function Dashboard({ user }) {
-    const [isChatOpen, setIsChatOpen] = useState(false);
-    const [currentView, setCurrentView] = useState('feed'); // 'feed' | 'profile' | 'notifications'
+    const [currentView, setCurrentView] = useState('feed'); // 'feed' | 'profile' | 'notifications' | 'chat'
     const [viewingUser, setViewingUser] = useState(null); // Usuário sendo visualizado no perfil
 
     // Hook de Notificações
@@ -118,6 +117,7 @@ export function Dashboard({ user }) {
             <Sidebar
                 currentView={currentView}
                 onNavigate={handleNavigate}
+                unreadChatCount={unreadChatCount}
             />
 
             {/* Main Content */}
@@ -155,6 +155,8 @@ export function Dashboard({ user }) {
                         onClearHistory={handleClearHistory}
                         onUserClick={handleViewProfile}
                     />
+                ) : currentView === 'chat' ? (
+                    <ChatView />
                 ) : (
                     <Feed
                         user={user}
@@ -165,29 +167,15 @@ export function Dashboard({ user }) {
                         onUserClick={handleViewProfile}
                     />
                 )}
-
-                {/* Chat Widget */}
-                <ChatWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
-
-                {/* Floating Action Button (FAB) */}
-                {/* Floating Action Button (FAB) */}
-                <button
-                    className={`${styles.chatFab} ${isChatOpen ? styles.active : ''}`}
-                    onClick={() => setIsChatOpen(!isChatOpen)}
-                    title="Mensagens"
-                >
-                    <TextWithEmojis text="💬" size={28} />
-                    {unreadChatCount > 0 && !isChatOpen && (
-                        <span className={styles.fabBadge}>{unreadChatCount}</span>
-                    )}
-                </button>
             </main>
 
-            {/* Friends Sidebar (Right) */}
-            <FriendsSidebar
-                user={user}
-                onUserClick={handleViewProfile}
-            />
+            {/* Friends Sidebar (Right) - Hide on chat view if needed, but keeping for now */}
+            {currentView !== 'chat' && (
+                <FriendsSidebar
+                    user={user}
+                    onUserClick={handleViewProfile}
+                />
+            )}
         </div >
     );
 }

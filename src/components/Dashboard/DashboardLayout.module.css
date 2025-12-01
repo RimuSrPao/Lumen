@@ -15,7 +15,8 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    /* Garante que o scroll seja interno aos filhos */
+    min-width: 0;
+    /* Prevent flex children from forcing width */
 }
 
 .chatFab {
