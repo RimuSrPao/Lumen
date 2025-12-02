@@ -79,10 +79,24 @@ function createWindow() {
         win.loadURL('http://localhost:5173');
         // win.webContents.openDevTools(); // Opcional: abrir devtools automaticamente
     } else {
-        // Em produção, servir via HTTP local para compatibilidade com Firebase Auth
-        const serve = require('electron-serve');
-        const loadURL = serve({ directory: path.join(__dirname, '../dist') });
-        loadURL(win);
+        // Em produção, servir via HTTP local (localhost) para compatibilidade total com Firebase Auth e Google OAuth
+        const http = require('http');
+        const handler = require('serve-handler');
+
+        const server = http.createServer((request, response) => {
+            return handler(request, response, {
+                public: path.join(__dirname, '../dist'),
+                rewrites: [
+                    { source: '**', destination: '/index.html' } // Support for client-side routing if needed
+                ]
+            });
+        });
+
+        server.listen(0, () => {
+            const port = server.address().port;
+            console.log(`Server running at http://localhost:${port}`);
+            win.loadURL(`http://localhost:${port}`);
+        });
     }
 
     // Customizar abertura de novas janelas (Popups como o do Google Login)
