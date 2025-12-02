@@ -28,15 +28,12 @@ jobs:
         run: npm run build
 
       - name: Build Electron (Windows)
-        run: npm run publish:win
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run build:win
 
-      - name: Upload Release Assets
-        uses: softprops/action-gh-release@v1
+      - name: Create Release
+        uses: ncipollo/release-action@v1
         with:
-          files: |
-            dist-electron/*.exe
-            dist-electron/*.yml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "dist/*.exe,dist/*.yml"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          prerelease: false
