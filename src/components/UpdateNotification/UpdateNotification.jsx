@@ -42,6 +42,9 @@ const UpdateNotification = () => {
             setUpdateState('error');
             setError(error.message);
         });
+
+        // Forçar verificação ao montar o componente
+        window.electronAPI.checkForUpdates();
     }, []);
 
     const handleDownload = () => {
