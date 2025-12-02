@@ -237,22 +237,26 @@ export function Login() {
                         </div>
                     </form>
 
-                    <div style={{
-                        position: 'absolute',
-                        bottom: '20px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        color: 'rgba(255, 255, 255, 0.3)',
-                        fontSize: '0.75rem',
-                        fontWeight: '500'
-                    }}>
-                        v{packageJson.version}
-                    </div>
                 </div>
+
             </div>
 
             <div className="lumen-right">
                 {/* Imagem de fundo via CSS */}
+            </div>
+
+            <div style={{
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px', // Canto inferior direito
+                color: 'rgba(255, 255, 255, 0.3)', // Um pouco mais discreto na imagem
+                fontSize: '0.75rem',
+                fontWeight: '500',
+                zIndex: 9999,
+                pointerEvents: 'none',
+                fontFamily: 'Inter, sans-serif'
+            }}>
+                v{packageJson?.version || '0.0.0'}
             </div>
         </div>
     );
