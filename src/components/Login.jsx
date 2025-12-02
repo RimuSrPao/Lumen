@@ -3,6 +3,7 @@ import './Login.css';
 import { auth, googleProvider } from '../firebase';
 import { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendPasswordResetEmail, fetchSignInMethodsForEmail } from 'firebase/auth';
 import { Toast } from './Toast';
+import packageJson from '../../package.json';
 
 export function Login() {
     const [isLogin, setIsLogin] = useState(true);
@@ -245,7 +246,7 @@ export function Login() {
                         fontSize: '0.75rem',
                         fontWeight: '500'
                     }}>
-                        v{require('../../package.json').version}
+                        v{packageJson.version}
                     </div>
                 </div>
             </div>
