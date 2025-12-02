@@ -71,6 +71,7 @@ function createWindow() {
         autoHideMenuBar: true,
     });
 
+
     const isDev = process.env.NODE_ENV === 'development';
 
     if (isDev) {
@@ -78,7 +79,10 @@ function createWindow() {
         win.loadURL('http://localhost:5173');
         // win.webContents.openDevTools(); // Opcional: abrir devtools automaticamente
     } else {
-        win.loadFile(path.join(__dirname, '../dist/index.html'));
+        // Em produção, servir via HTTP local para compatibilidade com Firebase Auth
+        const serve = require('electron-serve');
+        const loadURL = serve({ directory: path.join(__dirname, '../dist') });
+        loadURL(win);
     }
 
     // Customizar abertura de novas janelas (Popups como o do Google Login)
