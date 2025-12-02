@@ -7,7 +7,7 @@ autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 
 // Configurações do autoUpdater
-autoUpdater.autoDownload = false; // Não baixar automaticamente, perguntar ao usuário
+autoUpdater.autoDownload = true; // Baixar automaticamente em segundo plano
 autoUpdater.autoInstallOnAppQuit = true; // Instalar automaticamente ao fechar o app
 
 let mainWindow = null;
