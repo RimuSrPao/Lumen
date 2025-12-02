@@ -235,6 +235,18 @@ export function Login() {
                             </button>
                         </div>
                     </form>
+
+                    <div style={{
+                        position: 'absolute',
+                        bottom: '20px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        color: 'rgba(255, 255, 255, 0.3)',
+                        fontSize: '0.75rem',
+                        fontWeight: '500'
+                    }}>
+                        v{require('../../package.json').version}
+                    </div>
                 </div>
             </div>
 
