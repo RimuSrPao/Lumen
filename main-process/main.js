@@ -83,12 +83,28 @@ function createWindow() {
 
     // Customizar abertura de novas janelas (Popups como o do Google Login)
     win.webContents.setWindowOpenHandler(({ url }) => {
+        // Permitir popups do Google OAuth
+        if (url.includes('accounts.google.com') || url.includes('firebase')) {
+            return {
+                action: 'allow',
+                overrideBrowserWindowOptions: {
+                    autoHideMenuBar: true,
+                    backgroundColor: '#ffffff', // Fundo branco para o Google
+                    width: 500,
+                    height: 600,
+                    webPreferences: {
+                        nodeIntegration: false,
+                        contextIsolation: true
+                    }
+                }
+            };
+        }
+
         return {
             action: 'allow',
             overrideBrowserWindowOptions: {
-                autoHideMenuBar: true, // Remove File, Edit, View...
-                backgroundColor: '#131316', // Fundo escuro
-                // frame: false // CUIDADO: Se remover o frame, o usuário não consegue fechar a janela do Google!
+                autoHideMenuBar: true,
+                backgroundColor: '#131316',
             }
         };
     });
